@@ -10,6 +10,11 @@ STORY = "She left the light on. Forever."
 
 
 def main() -> None:
+    words = STORY.split()
+    if len(words) != 6:
+        raise ValueError(f"story must be exactly six words, got {len(words)}")
+    if not 1 <= len(STORY) <= 60:
+        raise ValueError("story must be 1-60 characters")
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
